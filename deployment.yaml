@@ -24,10 +24,6 @@ spec:
               value: "1000" # Replace with the actual PGID if different
             - name: TZ
               value: "America/New_York" # Replace with the actual timezone if different
-          readinessProbe:
-            httpGet:
-              path: /ping
-              port: 3001
           securityContext:
             allowPrivilegeEscalation: false
             privileged: false
