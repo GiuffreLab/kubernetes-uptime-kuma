@@ -31,12 +31,12 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             privileged: false
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
           volumeMounts:
             - name: app-data
               mountPath: /app/data
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       volumes:
         - name: app-data
           persistentVolumeClaim:
