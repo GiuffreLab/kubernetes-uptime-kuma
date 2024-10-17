@@ -44,4 +44,4 @@ kubectl delete namespace uptime-kuma
 The Docker Socket monitoring that `uptime-kuma` is capable of will not work in a Kubernetes environment.
 
 With the introduction of the Container Runtime Interface (CRI) in Kubernetes, and Docker being deprecated in favor of runtimes
-like containerd and CRI-O, direct access to the Docker socket may not recommended.
+like containerd and CRI-O, direct access to the Docker socket doesn't work.
