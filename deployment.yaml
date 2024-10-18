@@ -12,6 +12,9 @@ spec:
       labels:
         app: uptime-kuma
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: uptime-kuma
           image: louislam/uptime-kuma:1
@@ -27,12 +30,15 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             privileged: false
+            runAsNonRoot: true
+            runAsUser: 1000  # Using a non-zero UID to ensure it's not running as root
+            capabilities:
+              drop:
+                - ALL  # Drop all Linux capabilities unless explicitly needed
           volumeMounts:
             - name: app-data
               mountPath: /app/data
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
+
       volumes:
         - name: app-data
           persistentVolumeClaim:
